@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        body{
+            background: #36D1DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+        }
+        #titulo{
+             color: white;
+             display: flex;
+             justify-content: center;
+             
+            }
+        
+            .corpo{
+                 
+                 display: flex;
+                 flex-wrap: wrap;
+                justify-content: center;
+                color: white;
+                }
+                .controle{
+                    margin-top: 2%;
+                    width: 80%;
+                    border: solid 2px;
+                    border-radius: 10px;
+                    font-size: large;
+                    display: flex;
+                    justify-content: space-around;
+                   flex-wrap: wrap;
+                   padding-left: 1%;
+                   
+                     
+                }
+                .resultado{
+                   width: auto;
+                
+                   margin-top: 2%;
+                   display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    font-size: large;
+                    
+                  }
+                  itens2{
+                
+                      justify-content: flex-end;
+                  }
+                
+              table {
+                  border: solid 1px;
+                  margin-bottom: 3%;
+              }
+              td, tr {
+                  border: solid 1px;
+                  
+                
+              }
+              td{
+                  padding: auto;
+              }
+
+              .btn{
+                  border: 5px;
+                  margin-right: auto;
+                  border-radius: 20px;
+                  background-color: black;
+                  height: 30px;
+                  color: white;
+                  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                  margin-top: 0.8%;
+                  
+                 
+              }
+              .btn:hover{
+                  background-color: #A9A9A9;
+              }
+              .btn2{
+                  background-color:red;
+                  color: white;
+              }
+              .btn2:hover{
+                  background-color: #F78181;
+              }
+              .valores{
+                  display: flex;
+                  justify-content: center;
+                  color: black;
+                  font-size: 20px;
+                  font-weight: 800;
+              }
+              footer{
+                  display: flex;
+                  justify-content: center;
+              }
+              .botoes{
+                  width: 100%;
+              }
+              #salvar {
+                  width: 30%;
+                  margin-left: 10%;
+                  margin-top: 1%;
+                  background-color: #00FF7F;
+                  height: 30px;
+              
+              }
+              #limpar {
+                  width: 30%;
+                 margin-right: 10%;
+                  float: right;
+                  margin-top: 1%;
+                  background-color: #FF4500;
+                  color: white;
+                    height: 30px;
+              }
+              #salvar:hover{
+                  background-color: #98FB98;
+              }
+              #limpar:hover{
+                  background-color: #FF8C00;
+              }
+    @media( max-width:460px){
+      
+       .controle{
+           display: flex;
+           flex-direction: column;
+           width: 95%;
+           height: 500px;
+           font-size: 15px;
+       }
+       
+    }
+    </style>
+
+    <title>Contador</title>
+</head>
+<body>
+    
+    
+    
+    
+    
+    
+    <div id="app">
+   
+    <h1 id="titulo">Tabulação de Ligações</h1>
+    <hr>
+  
+        <div class="corpo">
+           <div class="controle">
+               <div class="itens1">  Acompanhamento de ID dentro do prazo <button class="btn" @click="itens.id++"> +1</button><br>
+                Direcionado para operadora <button class="btn" @click="itens.direcionado++"> +1</button> <br>
+                Engano <button class="btn" @click="itens.en++">  +1</button><br>
+                Ligação muda <button class="btn" @click="itens.lm++">  +1</button><br>
+                Queda de ligação <button class="btn" @click="itens.ql++">  +1</button><br>
+               </div>
+               <div class="itens2">
+                Outras consultas <button class="btn" @click="itens.oc++">  +1</button><br>
+                Palavras Ofensivas ou falta de educação <button class="btn" @click="itens.pofe++">  +1</button> <br>
+                Problemas técnicos <button class="btn" @click="itens.pt++">  +1</button><br>
+                Reabertura <button class="btn" @click="itens.re++"> +1</button><br>
+               </div>
+                
+
+               
+          
+            <div class="itens3">
+            
+                Resposta padrão <button class="btn" @click="itens.rp++">  +1</button><br>
+                Trote <button class="btn" @click="itens.tr++">  +1</button><br>
+                Registro de solicitação <button class="btn" @click="itens.rs++"> +1</button><br>
+                CPF <button class="btn" @click="itens.cpf++"> +1</button><br>
+                CNPJ <button class="btn" @click="itens.cnpj++">  +1</button><br>
+                
+            </div>
+         
+           </div>
+
+           <div class="botoes"> <button @click="salvar" id="salvar">Salvar</button> <button @click="limpar" id="limpar">Limpar</button></div>
+           <div class="resultado">
+               <table>
+                    <tr> <td> Acompanhamento de ID dentro do prazo: <button class="btn2" @click="itens.id--">-1</button> <div class="valores"> Total  {{itens.id}}</div> </td> 
+                        <td>Outras consultas: <button class="btn2" @click="itens.oc--">-1</button> <div class="valores"> Total {{itens.oc}}</div></td>
+                        <td> Trote: <button class="btn2" @click="itens.tr--">-1</button><div class="valores"> Total {{itens.tr}}</div></td>
+                         
+                          
+                    </tr>
+                    <tr>
+                        <td>Direcionado para operadora: <button class="btn2" @click="itens.direcionado--">-1</button><div class="valores"> Total {{itens.direcionado}}</div></td> 
+                        <td> Palavras Ofensivas ou falta de educação: <button class="btn2" @click="itens.pofe--">-1</button><div class="valores"> Total {{itens.pofe}}</div></td>
+                        <td>Registro de solicitação: <button class="btn2" @click="itens.rs--">-1</button><div class="valores"> Total {{itens.rs}}</div></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Engano: <button class="btn2" @click="itens.en--">-1</button><div class="valores"> Total {{itens.en}}</div></td>
+                        <td>Problemas técnicos: <button class="btn2" @click="itens.pt--">-1</button><div class="valores"> Total {{itens.pt}}</div></td>
+                        <td> CPF: <button class="btn2" @click="itens.cpf--">-1</button><div class="valores"> Total {{itens.cpf}}</div></td>
+                        
+
+                    </tr>
+                    <tr>
+                        <td>Ligação muda: <button class="btn2" @click="itens.lm--">-1</button><div class="valores"> Total {{itens.lm}}</div> </td>
+                        <td>Reabertura: <button class="btn2" @click="itens.re--">-1</button><div class="valores"> Total {{itens.re}}</div> </td>
+                        <td> CNPJ: <button class="btn2" @click="itens.cnpj--">-1</button><div class="valores"> Total {{itens.cnpj}}</div></td>
+                       
+                       
+                    </tr>
+                    <tr>
+                        <td>Queda de ligação: <button class="btn2" @click="itens.ql--">-1</button><div class="valores"> Total {{itens.ql}}</div></td>
+                        <td> Resposta padrão: <button class="btn2" @click="itens.rp--">-1</button><div class="valores"> Total {{itens.rp}}</div></td>
+                        
+                      
+                       
+                    </tr>
+
+               </table>
+        
+            
+             </div>
+        </div>
+<hr>
+     <footer>
+         Desenvolvido pelo Colaborador Everton Cabral. 
+         Contato: Email: cabralclarinetista@gmail.com  Telefone (81)98759-5190 
+     </footer>
+   
+     </div>
+
+<script>
+    
+    new Vue({
+        el:'#app',
+        data:{
+            itens: {
+                id: 0,
+                direcionado: 0,
+                en: 0,
+                lm: 0,
+                ql: 0,
+                oc: 0,
+                pofe: 0,
+                pt: 0,
+                re: 0,
+                rp: 0,
+                tr: 0,
+                rs: 0,
+                cpf: 0,
+                cnpj: 0,
+                
+               
+
+            },
+          
+            dadosSalvos:localStorage.getItem('dados')
+
+        },
+        methods: {
+            salvar(){
+                dados = {id:this.itens.id,direcionado:this.itens.direcionado, en:this.itens.en,
+                        lm: this.itens.lm, ql:this.itens.ql, oc:this.itens.oc, pofe:this.itens.pofe,
+                        pt:this.itens.pt, re:this.itens.re, rp:this.itens.rp, tr:this.itens.tr,
+                        rs:this.itens.rs, cpf:this.itens.cpf, cnpj:this.itens.cnpj}
+                localStorage.setItem('dados', JSON.stringify(dados))
+
+               
+               
+            },
+            limpar(){
+                this.itens.id = 0
+                this.itens.direcionado = 0
+                this.itens.en = 0
+                this.itens.lm = 0
+                this.itens.ql = 0
+                this.itens.oc = 0
+                this.itens.pofe = 0
+                this.itens.pt = 0
+                this.itens.re = 0
+                this.itens.rp = 0
+                this.itens.tr = 0 
+                this.itens.rs = 0
+                this.itens.cpf = 0 
+                this.itens.cnpj = 0
+            }
+        },
+
+        mounted: function(){
+            dadosObj = JSON.parse(this.dadosSalvos)
+                this.itens = dadosObj
+                
+        }
+       
+    })
+ 
+
+</script>
+    
+</body>
+</html>
